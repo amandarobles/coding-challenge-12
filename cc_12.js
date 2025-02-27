@@ -13,3 +13,21 @@ metricCardsArray.forEach(card => { //updating card's inner text and style
     card.style.backgroundColor = "lighblue"; //changing the background color
     card.innerHTML += "- Updated"; //appending to the current text
 })
+
+// task 3: Dynami Inventory Management- Adding and Removing Items
+function addProductItem(productName) {
+    const inventoryList = document.getElementById("inventoryList");
+    const newItem = document.createElement("li"); //function to create a new product item
+    newItem.setAtttribute("class", "product-item"); //set class attribute
+    newItem.setAttribute("data-product", productName); //set custom data attribute
+    newItem.innerText = productName; //populating item with product name
+    inventoryList.appendChild(newItem); //appending new product item to inventory list
+    newItem.addEventListener("click", ()=> {inventoryList.removeChild(newItem); //adding click event to remove item when clicked
+    })
+}
+document.getElementById("addProductBtn").addEventListener("click", ()=> {
+    const productName = prompt("Enter product name:");
+    if(productName) {
+        addProductItem(productName); //event listener for the add product button
+    }
+});
