@@ -14,7 +14,7 @@ metricCardsArray.forEach(card => { //updating card's inner text and style
     card.innerHTML += "- Updated"; //appending to the current text
 })
 
-// task 3: Dynami Inventory Management- Adding and Removing Items
+// task 3: Dynamic Inventory Management- Adding and Removing Items
 function addProductItem(productName) {
     const inventoryList = document.getElementById("inventoryList");
     const newItem = document.createElement("li"); //function to create a new product item
@@ -31,3 +31,23 @@ document.getElementById("addProductBtn").addEventListener("click", ()=> {
         addProductItem(productName); //event listener for the add product button
     }
 });
+
+// task 4: Business Customer Section- Handling Event Bubbling
+const customerSection = document.getElementById("customerSection"); //selecting customer section container
+customerSection.addEventListener("click", () =>{
+    console.log("Customer section clicked"); //adding event listener to customer section
+});
+document.querySelectorAll(".customer-card".forEach(card => {
+    card.addEventListener("click", (event)=> {
+        console.log("Customer card clicked"); //adding event listeners to each customer card
+        event.stopPropagation(); //preventing event bubbling to parent
+    });
+}));
+
+//test data
+document.querySelectorAll(".customer-card").forEach(card => {
+    card.addEventListener("click", ()=> {
+        console.log("Customer card clicked");
+        //event.stopPropagation();
+    })
+})
